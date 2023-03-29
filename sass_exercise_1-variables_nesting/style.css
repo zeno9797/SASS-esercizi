@@ -1,0 +1,32 @@
+.container {
+  border: 1px solid red;
+  text-align: center;
+}
+.container h1 {
+  text-decoration: underline;
+  text-decoration-color: blue;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 8px;
+  color: green;
+}
+.container .content {
+  border: 1px solid green;
+}
+.container .content:nth-child(odd) {
+  color: blue;
+}
+.container .content:nth-child(even) {
+  color: red;
+}
+
+section {
+  display: flex;
+  align-content: center;
+  margin: 10px 20px;
+}
+
+article {
+  padding: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
