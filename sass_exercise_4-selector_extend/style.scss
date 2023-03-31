@@ -1,0 +1,76 @@
+@use 'abstracts/functions' as f;
+
+@use 'abstracts/variables' as v;
+
+
+
+@mixin article-card($borderColor, $width, $textColor, $fontSize){
+    border: $width solid $borderColor;
+    color: $textColor;
+    font-size: $fontSize;
+
+}
+
+.container {
+    border: 1px solid v.$color-primary;
+    text-align: center;
+    width: 80%;
+    margin: 5px auto;
+
+    h1 {
+
+        text: {
+            decoration: underline;
+            decoration-color: v.$color-secondary;
+            decoration-thickness: 1px;
+            underline-offset: 8px;
+        }
+        color: v.$color-tertiary;
+        
+    }
+
+    h2 {
+        @extend h1;
+        border: 1px solid red;
+        padding: 1rem;
+        width: 300px;
+        margin: 5px auto;
+    }
+
+    .content {
+
+        &:nth-child(odd) {
+        @include article-card(v.$color-tertiary, 1px,v.$color-secondary, 1rem);
+    }
+
+    
+
+    &:nth-child(even) {
+        @include article-card(v.$color-tertiary, 1px,v.$color-primary, 1rem);
+        
+    }
+
+    }   
+    
+    .footer-content {
+        @include article-card(v.$color-secondary, 1px, v.$color-tertiary, f.fontSize(1rem));
+        width: 100%;
+        
+    }
+} 
+
+
+
+
+section {
+    display: flex;
+    align-content: center;
+    margin: 10px 20px;
+    
+}
+
+article {
+    padding: 10px;
+    
+}
+
