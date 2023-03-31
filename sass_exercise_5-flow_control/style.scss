@@ -1,0 +1,102 @@
+@use 'abstracts/functions' as f;
+
+@use 'abstracts/variables' as v;
+
+
+
+@mixin article-card($borderColor, $width, $textColor, $fontSize){
+    border: $width solid $borderColor;
+    color: $textColor;
+    font-size: $fontSize;
+
+}
+
+.container {
+    border: 1px solid v.$color-primary;
+    text-align: center;
+    width: 80%;
+    margin: 5px auto;
+
+    h1 {
+
+        text: {
+            decoration: underline;
+            decoration-color: v.$color-secondary;
+            decoration-thickness: 1px;
+            underline-offset: 8px;
+        }
+        color: v.$color-tertiary;
+        
+    }
+
+    h2 {
+        @extend h1;
+        border: 1px solid red;
+        padding: 1rem;
+        width: 300px;
+        margin: 5px auto;
+    }
+
+    .content {
+
+        &:nth-child(odd) {
+        @include article-card(v.$color-tertiary, 1px,v.$color-secondary, f.rem(16));
+    }
+
+    
+
+    &:nth-child(even) {
+        @include article-card(v.$color-tertiary, 1px,v.$color-primary, f.rem(16));
+        
+    }
+
+    }   
+    
+    .footer-content {
+        @include article-card(v.$color-secondary, 1px, v.$color-tertiary, f.rem(32));
+        width: 100%;
+        
+    }
+} 
+
+
+
+section {
+    display: flex;
+    align-content: center;
+    margin: 10px 20px;
+    justify-content: space-between;
+    
+}
+
+article {
+    padding: 10px;
+    
+}
+
+
+@for $index from 1 through 20 {
+    .boxSection div:nth-child(#{$index}){
+        border: 1px solid red ;
+        width: f.rem(45);
+        height: f.rem(45);
+        background: darken(#ffffff, calc($index * 5%));
+        color: lighten( black, calc($index * 5%));
+
+        @if $index==10 {
+            background-color: v.$color-primary;
+            color: v.$color-secondary;
+        }
+    }  
+    }
+
+    $remSize: 1rem, 2rem, 3rem;
+
+    @each $size in $remSize {
+        .fs-#{$size} {
+            font-size: $size;
+        }
+    }
+
+    
+
